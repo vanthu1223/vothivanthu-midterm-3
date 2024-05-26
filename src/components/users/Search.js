@@ -1,28 +1,11 @@
-import axios from "axios";
 import React, { useState } from "react";
 import Users from "./Users";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { fetchSearchUsers } from "../../api";
-import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
-import { useEffect } from "react";
 
 const Search = () => {
-    const history = useHistory();
-    const query = useQuery();
     const [text, setText] = useState("");
     const [users, setUsers] = useState([]);
-    const [searchTerm, setSearchTerm] = useState(query.get('searchTerm') || '');
-    const [filter, setFilter] = useState(query.get('filter') || '');
     
-    function useQuery() {
-        return new URLSearchParams(useLocation().search);
-      }
-      useEffect(() => {
-        const params = new URLSearchParams();
-        if (searchTerm) params.set('searchTerm', searchTerm);
-        if (filter) params.set('filter', filter);
-        history.replace({ search: params.toString() });
-      }, [searchTerm, filter, history]);
 
     const searchUsers = async (text) => {
         try {
