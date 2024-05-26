@@ -24,7 +24,7 @@ const RepoItem = () => {
             <h1>Repos</h1>
             <ul>
                 {repoItem.map(repo => (
-                    <li key={repo.id}>{repo.name}</li>
+                     <li key={repo.id}>{repo.name}</li>
                 ))}
             </ul>
         </div>

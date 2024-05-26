@@ -1,9 +1,14 @@
+
 import React, { useState } from "react";
 import Users from "./Users";
 import { fetchSearchUsers } from "../../api";
+
+
 const Search = () => {
+ 
     const [text, setText] = useState("");
     const [users, setUsers] = useState([]);
+
     const searchUsers = async (text) => {
         try {
             const response = await fetchSearchUsers(text)
