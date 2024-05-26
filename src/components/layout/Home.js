@@ -4,15 +4,17 @@ import About from "../pages/About";
 import NotFound from "../pages/NotFound";
 import Search from "../users/Search";
 import User from "../users/User";
+import Button from "./Button";
 const Home = () => {
 return (
-<div className="container">
+<div className="container" data-theme='dark'>
     <Switch>
         <Route exact path="/" component={Search} />
         <Route exact path="/about" component={About} />
         <Route exact path="/user/:id" component={User} />
         <Route path="/*" component={NotFound}></Route>
     </Switch>
+    <Button/>
 </div>
 );
 };
