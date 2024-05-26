@@ -26,7 +26,7 @@ export const fetchGetUserRepos = async (id) => {
 export const fetchSearchUsers = async (text) => {
     try {
         const res = await apiUser.get(`/search/users?q=${text}`)
-        return res.data
+        return res.data.items
     }
     catch (error)
     {
