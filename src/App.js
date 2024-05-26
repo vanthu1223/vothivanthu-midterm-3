@@ -1,8 +1,6 @@
 import './App.css';
 import Navbar from './components/layout/Navbar';
-import { useEffect, useState } from 'react';
-import axios from "axios"
-import Users from './components/users/Users';
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import Search from './components/users/Search';
 const App = () => {
   return (
@@ -10,6 +8,9 @@ const App = () => {
         <Navbar/>
         <div className='container'>
           <h1>Github Users Data</h1>
+          <Switch>
+            <Route exact path="/" component={Search} />
+          </Switch>
         </div>
         <Search />
     </div>
