@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import Repos from "../repos/Repos";
 import { fetchGetUser } from "../../api";
 import { fetchGetUserRepos } from "../../api";
+import RepoItem from "../repos/RepoItem";
 const User = () => {
     const [repos, setRepos] = useState([]);
     const { id } = useParams();
@@ -120,6 +121,7 @@ const User = () => {
                 <div className="badge badge-dark">Gist: {public_gists}</div>
             </div>
             <Repos repos={repos} />
+            <RepoItem />
         </Fragment>
     );
 };

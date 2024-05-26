@@ -17,12 +17,13 @@ export const fetchGetUser = async (username) => {
 export const fetchGetUserRepos = async (id) => {
     try {
         const res = await apiUser.get(`/users/${id}/repos`)
-        return res.data
+        return res
     }
     catch(error){
         console.log("Error data",error);
     }
 }
+
 export const fetchSearchUsers = async (text) => {
     try {
         const res = await apiUser.get(`/search/users?q=${text}`)
