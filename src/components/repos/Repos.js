@@ -1,12 +1,11 @@
 import { useState } from "react";
-import axios from "axios";
+import { fetchGetUserRepos } from "../../api";
 const Repos = () => {
     const [repos, setRepos] = useState([]);
     const getUserRepos = async (id) => {
         try {
-            const res = await axios.get(`https://api.github.com/users/${id}/repos`);
-            setRepos(res.data);
-            console.log(res.data);
+            const res = await fetchGetUserRepos(id);
+            setRepos(res);
         } catch (error) {
             console.log("Error", error);
         }

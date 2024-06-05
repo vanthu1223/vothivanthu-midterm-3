@@ -1,5 +1,4 @@
-
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Users from "./Users";
 import { fetchSearchUsers } from "../../api";
 
@@ -9,10 +8,18 @@ const Search = () => {
     const [text, setText] = useState("");
     const [users, setUsers] = useState([]);
 
+    useEffect(() => {
+        const storedSearchDetails = JSON.parse(localStorage.getItem("searchDetails"));
+        if (storedSearchDetails) {
+          setUsers(storedSearchDetails.searchDetails);
+          setText(storedSearchDetails.searchQuery);
+        }
+      }, []);
     const searchUsers = async (text) => {
         try {
             const response = await fetchSearchUsers(text)
             setUsers(response);
+            localStorage.setItem('searchDetails', JSON.stringify({searchQuery:text,searchDetails:response}));
             } catch (error) {
             console.error("Error fetching data:", error);
             }

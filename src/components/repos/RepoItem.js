@@ -9,22 +9,27 @@ const RepoItem = () => {
         const getUserRepos = async () => {
             try {
                 const res = await fetchGetUserRepos(id);
-                setRepoItem(res.data);
-                console.log(res.data);
+                if (res) {
+                    setRepoItem(res.data);
+                } 
             } catch (error) {
-                console.log("Error", error);
+                console.error("Error in getUserRepos function:", error);
             }
         };
-
+    
         getUserRepos();
     }, [id]);
-
     return (
         <div className="repo">
             <h1>Repos</h1>
             <ul>
                 {repoItem.map(repo => (
-                     <li key={repo.id}>{repo.name}</li>
+                 <li>
+                 <a href={`${repo.html_url}`} target="_blank" key={repo.id}>
+                   {repo.name}
+                 </a>
+               </li>
+                
                 ))}
             </ul>
         </div>

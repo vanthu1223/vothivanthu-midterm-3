@@ -1,7 +1,6 @@
 import axios from "axios";
 const apiUser = axios.create({
     baseURL: 'https://api.github.com',
-    timeout:1000
 });
 export const fetchGetUser = async (username) => {
     try {
@@ -16,11 +15,11 @@ export const fetchGetUser = async (username) => {
 }
 export const fetchGetUserRepos = async (id) => {
     try {
-        const res = await apiUser.get(`/users/${id}/repos`)
-        return res
-    }
-    catch(error){
-        console.log("Error data",error);
+        const res = await apiUser.get(`/users/${id}/repos`);
+        return res;
+    } catch (error) {
+        console.error("Error fetching user repos:", error);
+        return null;  // Return a default value in case of an error
     }
 }
 

@@ -434,7 +434,7 @@ table th {
   left: 0;
   width: 100%;
 }
-
+/* 
 #toggle {
   width: 50px;
   display: flex;
@@ -494,5 +494,6 @@ body.dark-mode {
       background-color: #1a202c;
     }
   }
-}
+} */
+
 /* example use of CSS custom properties */
