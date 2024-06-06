@@ -434,66 +434,21 @@ table th {
   left: 0;
   width: 100%;
 }
-/* 
-#toggle {
-  width: 50px;
-  display: flex;
-  padding: 5px;
-  background-color: #1a202c;
-  display: block;
-  border-radius: 1000px;
-  cursor: pointer;
-  box-shadow: 0px 5px 20px -10px #000000;
-  transition: background-color 0.2s ease-in;
-  
-  .toggle-inner {
-    width: 20px;
-    height: 15px;
-    background-color: white;
-    border-radius: 1000px;
-    transition: margin-left 0.2s ease-in, background-color 0.2s ease-in;
-
-    &.toggle-active {
-      margin-left: 20px;
-    }
-  }
-}
-body.dark-mode {
-  background-color: #1a202c;
-  color: white;
-}
-#container {
-  display: flex;
-  height: 100%;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  
-  h1 {
-    padding: 0;
-    margin: 0 0 10px 0;
-  }
-  
-  p {
-    opacity: .8;
-  }
+body.dark-theme {
+  background-color: #333333;
+  color: #ffffff;
 }
 
-.dark-mode {
-  color: white;
-    
-  main {
-    background-color: #1a202c;
-  }
-  
-  #toggle {
-    background-color: white;
+.app-container {
+  min-height: 100vh; /* Ensures it covers the entire viewport height */
+}
 
-    .toggle-inner {
-      background-color: #1a202c;
-    }
-  }
-} */
+.ctn.dark {
+  background-color: #333333;
+  color: #ffffff;
+}
 
-/* example use of CSS custom properties */
+.ctn.light {
+  background-color: #ffffff;
+  color: var(--dark-color);
+}

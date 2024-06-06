@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 const RepoItem = () => {
     const [repoItem, setRepoItem] = useState([]);
     const { id } = useParams();
-    // const [user, setUser] = useState({});
     useEffect(() => {
         const getUserRepos = async () => {
             try {
@@ -23,9 +22,9 @@ const RepoItem = () => {
         <div className="repo">
             <h1>Repos</h1>
             <ul>
-                {repoItem.map(repo => (
-                 <li>
-                 <a href={`${repo.html_url}`} target="_blank" key={repo.id}>
+                {repoItem.map((repo,index) => (
+                 <li key={index} >
+                 <a href={`${repo.html_url}`} target="_blank" rel="noreferrer" >
                    {repo.name}
                  </a>
                </li>

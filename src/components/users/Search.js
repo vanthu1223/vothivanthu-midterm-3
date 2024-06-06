@@ -9,17 +9,17 @@ const Search = () => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        const storedSearchDetails = JSON.parse(localStorage.getItem("searchDetails"));
-        if (storedSearchDetails) {
-          setUsers(storedSearchDetails.searchDetails);
-          setText(storedSearchDetails.searchQuery);
+        const storedSearchDetails = JSON.parse(sessionStorage.getItem("searchDetails"));
+        if (storedSearchDetails && Array.isArray(storedSearchDetails.searchDetails)) {
+            setUsers(storedSearchDetails.searchDetails);
+            setText(storedSearchDetails.searchQuery);
         }
-      }, []);
+    }, []);
     const searchUsers = async (text) => {
         try {
             const response = await fetchSearchUsers(text)
             setUsers(response);
-            localStorage.setItem('searchDetails', JSON.stringify({searchQuery:text,searchDetails:response}));
+            sessionStorage.setItem('searchDetails', JSON.stringify({ searchQuery: text, searchDetails: response }));
             } catch (error) {
             console.error("Error fetching data:", error);
             }
@@ -35,6 +35,7 @@ const Search = () => {
     };
     const clearUsers = () => {
         setUsers([]);
+        sessionStorage.removeItem('searchDetails');
     }
     const onChange = (e) => setText(e.target.value);
     return (

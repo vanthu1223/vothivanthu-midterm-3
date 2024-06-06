@@ -1,31 +1,23 @@
-import React from "react"
+import { useState, useEffect } from "react";
 const Button = () => {
-    const [ darkMode, setDarkMode ] = React.useState(false)
-     
-    React.useEffect(() => {
-      const body = document.body
-      const toggle = document.querySelector('.toggle-inner')
-      
-      // If dark mode is enabled - adds classes to update dark-mode styling.
-      // Else, removes and styling is as normal.
-      if( darkMode === true ) {
-        body.classList.add('dark-mode')
-        toggle.classList.add('toggle-active')
-      } else {
-        body.classList.remove('dark-mode')
-        toggle.classList.remove('toggle-active')
-      }
-    }, [darkMode])
-    
+    const [theme, setTheme] = useState(() => {
+        const initialTheme = localStorage.getItem("theme");
+        return initialTheme ? initialTheme : "light";
+      });
+    useEffect(() => {
+        document.body.className = theme === 'light' ? '' : 'dark-theme';
+        localStorage.setItem("theme", theme);
+    }, [theme]);
+
+    function toggleTheme() {
+        setTheme(prevTheme => prevTheme === "light" ? "dark" : "light");
+    }
     return (
-      <header>
-        <div
-          id="toggle"
-          onClick={() => darkMode === false ? setDarkMode(true) : setDarkMode(false)}
-        >
-          <div className="toggle-inner"/>
+    <div className={`ctn ${theme}`}>
+        <div className={`app ${theme}`}>
+            <button onClick={toggleTheme} className='active btn pr-4 pl-4 border-0'>Theme</button>
         </div>
-      </header>
+    </div>
     )
-  }
-  export default Button;
+}
+export default Button;
